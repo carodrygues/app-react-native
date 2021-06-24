@@ -14,17 +14,16 @@ export default function Register({ navigation }: any) {
     const [userPassword, setUserPassword] = React.useState('');
 
     function registerUser() {
-      if(parseInt(age) < 18) {
-        Alert.alert('Só pode se cadastrar a partir dos 18 anos!');
-        return;
-      }
-      try {
-        actions.registerUser(email, userPassword, name, parseInt(age), address);
-      } catch(error) {
-          console.log(error);
-      }
-      
-      //goHome();
+  
+        actions.registerUser(email, userPassword, name, parseInt(age), address).then((result) => {
+            if (result == true) {
+                goHome();
+                Alert.alert('Cadastro Realizado com Sucesso', 'Você já pode se logar!')
+            }
+          })
+          .catch((error) => {
+              console.error(error);
+          });
     }
 
     function goHome(): void {
@@ -36,11 +35,11 @@ export default function Register({ navigation }: any) {
 
     return (
         <View style={styles.container}>
-                <InputTextField value={name} label="Nome" onChange={setName} />
-                <InputTextField value={age} label="Idade" onChange={setAge} />
-                <InputTextField value={address} label="Endereço" onChange={setAddress} />
-                <InputTextField value={email} label="E-mail" onChange={setEmail} />
-                <InputTextField value={userPassword} label="Senha" onChange={setUserPassword} />
+                <InputTextField value={name} label="Nome" onChange={setName} secure={false}/>
+                <InputTextField value={age} label="Idade" onChange={setAge}  secure={false}/>
+                <InputTextField value={address} label="Endereço" onChange={setAddress} secure={false}/>
+                <InputTextField value={email} label="E-mail" onChange={setEmail} secure={false}/>
+                <InputTextField value={userPassword} label="Senha" onChange={setUserPassword} secure={true}/>
             <View style={styles.fixToText}>
                 <Button color="#60A6A6"  title='VOLTAR' onPress={goHome} />
                 <Button color="#60A6A6"  title='Cadastrar' onPress={registerUser} />

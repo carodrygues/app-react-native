@@ -10,7 +10,7 @@ export async function logar(email: string, userPassword: string) {
         console.log(response);
         return response.data;
     } catch (error) {
-        console.error('Usuário ou Senha Inválida!');
+        Alert.alert('Erro','Usuário ou senha inválida!');
         return null;
     }
 }

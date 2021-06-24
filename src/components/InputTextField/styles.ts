@@ -16,6 +16,6 @@ export default StyleSheet.create({
        borderWidth: 1,
        borderColor: "#592F20",
        paddingHorizontal: 10,
-       width: Dimensions.get('screen').width - 80,
+    
     },
 });

@@ -45,8 +45,8 @@ export default function HomePage({ navigation }: any) {
           <View style={styles.logo}>
             <Image style={styles.logoImg} source={require('../../../assets/icon.png')} />
           </View>
-              <InputTextField value={email} label="Usuário" onChange={setEmail} />
-              <InputTextField value={userPassword} label="Senha" onChange={setUserPassword} />
+              <InputTextField value={email} label="Usuário" onChange={setEmail} secure={false}/>
+              <InputTextField value={userPassword} label="Senha" onChange={setUserPassword} secure={true}/>
                 <View > 
                   <Button color="#60A6A6" title='Entrar' onPress={login} />
                 </View>
