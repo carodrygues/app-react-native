@@ -9,7 +9,11 @@ export async function registerUser(email: string, userPassword: string, name: st
       Alert.alert('Campo Vazio','Nome é obrigatório!');
       return;
     }
-    if (register.age === undefined || register.age < 18 || register.age === NaN ) {
+    if (isNaN(age) ) {
+      Alert.alert('Campo Vazio','Idade é obrigatória!');
+      return;
+    }
+    if (register.age === undefined || register.age < 18 ) {
       Alert.alert('Atenção','A idade precisa ser igual ou maior que 18!');
       return;
     }
